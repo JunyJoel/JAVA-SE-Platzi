@@ -1,5 +1,7 @@
 package Models;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,27 +10,12 @@ public class Doctor extends User{
                         //se conserven a lo largo de toooodo el programa
                         //sin importar donde se realicen los cambios o donde se lean.*/
     private String speciality;
+    ArrayList<AvailableAppointment> availableAppointments = new ArrayList<>();
 
     /* ***************************************************************************************************** */
 //  COSTRUCTORS
     public Doctor(String name, String email){
         super(name, email);
-        this.speciality = speciality;
-    }
-
-    /* ***************************************************************************************************** */
-//  METHODS
-    public void showName(){
-        System.out.println(getName());
-    }
-
-    public void showId(){
-        System.out.println("Models.Doctor ID: ");
-    }
-
-    ArrayList<AvailableAppointment> availableAppointments = new ArrayList<>();
-    public void addAvailableAppointment(Date date, String time){
-        availableAppointments.add(new Doctor.AvailableAppointment(date,time));
     }
 
     /* ***************************************************************************************************** */
@@ -50,6 +37,24 @@ public class Doctor extends User{
         this.availableAppointments = availableAppointments;
     }
 
+    /* ***************************************************************************************************** */
+//  METHODS
+    public void showName(){
+        System.out.println(getName());
+    }
+
+    public void showId(){
+        System.out.println("Models.Doctor ID: ");
+    }
+
+    public void addAvailableAppointment(String date, String time){
+        try {
+            availableAppointments.add(new AvailableAppointment(date,time));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public String toString() {
         return super.toString() +"\nSpeciality: " + speciality + "\nAvailable: " + availableAppointments.toString();
@@ -68,9 +73,14 @@ public class Doctor extends User{
         private int id;
         private Date date;
         private String time;
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-        public AvailableAppointment(Date date, String time){
-            this.date = date;
+        public AvailableAppointment(String date, String time) throws ParseException {
+            try {
+                this.date = format.parse(date);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
             this.time = time;
         }
 
@@ -82,8 +92,12 @@ public class Doctor extends User{
             this.id = id;
         }
 
-        public Date getDate() {
+        public Date getDate(String DATE) {
             return date;
+        }
+
+        public String getDate(){
+            return format.format(date);
         }
 
         public void setDate(Date date) {

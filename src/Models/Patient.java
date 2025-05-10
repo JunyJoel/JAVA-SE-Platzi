@@ -1,5 +1,8 @@
 package Models;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Patient extends User{
     /* ***************************************************************************************************** */
 //  ATRIBUTES
@@ -7,6 +10,9 @@ public class Patient extends User{
     private Double weight;
     private Double height;
     private String blood;
+    private ArrayList<AppointmentDoctor> appointmentDoctors = new ArrayList<>();
+    private ArrayList<AppointmentNurse> appointmentNurses = new ArrayList<>();
+
 
     /* ***************************************************************************************************** */
 //  CONSTRUCTOR
@@ -34,6 +40,14 @@ public class Patient extends User{
         return height;
     }
 
+    public ArrayList<AppointmentDoctor> getAppointmentDoctors() {
+        return appointmentDoctors;
+    }
+
+    public ArrayList<AppointmentNurse> getAppointmentNurses() {
+        return appointmentNurses;
+    }
+
     //  SETTERS
 
     public void setBirthday(String birthday) {
@@ -51,6 +65,19 @@ public class Patient extends User{
     public void setHeight(Double height) {
         this.height = height;
     }
+
+    public void addAppointmentDoctors(Doctor doctor, Date date, String time) {
+        AppointmentDoctor appointmentDoctor = new AppointmentDoctor(this, doctor);
+        appointmentDoctor.schedule(date,time);
+        appointmentDoctors.add(appointmentDoctor);
+    }
+
+    public void setAppointmentNurses(ArrayList<AppointmentNurse> appointmentNurses) {
+        this.appointmentNurses = appointmentNurses;
+    }
+
+    /* ***************************************************************************************************** */
+//  METHODS
 
     @Override
     public String toString() {

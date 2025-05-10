@@ -4,13 +4,15 @@ import Models.User;
 
 import java.util.Date;
 
+import static UI.UiMenu.*;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Doctor myDoctor = new Doctor("joel", "j@mail.com"); //new instansia o mete a la memoria un objeto de clase Models.Doctor() llamado myDoctor
+        /*Doctor myDoctor = new Doctor("joel", "j@mail.com"); //new instansia o mete a la memoria un objeto de clase Models.Doctor() llamado myDoctor
                                         //Donde Models.Doctor() es el metodo constructor.
-        /*myDoctor.name = "Alejandro Rodriguez"; //.name es acceder a una caracteristica de la clase para modificarla
+        myDoctor.name = "Alejandro Rodriguez"; //.name es acceder a una caracteristica de la clase para modificarla
         myDoctor.showName(); //.showName() es llamar al metodo definido dentro de la clase.
         myDoctor.showId();
 
@@ -31,17 +33,17 @@ public class Main {
             System.out.println(patient.getPhoneNumber());
         }
         System.out.println(patient.getHeight());
-        System.out.println(patient.getWeight());*/
+        System.out.println(patient.getWeight());
 
-        myDoctor.addAvailableAppointment(new Date(),"10am");
-        myDoctor.addAvailableAppointment(new Date(),"11am");
-        myDoctor.addAvailableAppointment(new Date(),"1pm");
+        //myDoctor.addAvailableAppointment(new Date(),"10am");
+        //myDoctor.addAvailableAppointment(new Date(),"11am");
+        //myDoctor.addAvailableAppointment(new Date(),"1pm");
 
-        /*
+
         for (Models.Doctor.AvailableAppointment aA: myDoctor.getAvailableAppointments()){
             System.out.println(aA.getDate()+" "+aA.getTime());
         }
-        */
+
 
 
         Patient patient = new Patient("Gio", "G@mail.com");
@@ -52,7 +54,8 @@ public class Main {
         user.showDataUser();
 
         System.out.println("\n");
-        System.out.println(patient);
+        System.out.println(patient);*/
+        showMenu();
     }
 }
 
