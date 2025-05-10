@@ -1,25 +1,27 @@
-import java.util.Date;
+import Models.Doctor;
+import Models.Patient;
+import Models.User;
 
-import static UI.UiMenu.*;
+import java.util.Date;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Doctor myDoctor = new Doctor(); //new instansia o mete a la memoria un objeto de clase Doctor() llamado myDoctor
-                                        //Donde Doctor() es el metodo constructor.
+        Doctor myDoctor = new Doctor("joel", "j@mail.com"); //new instansia o mete a la memoria un objeto de clase Models.Doctor() llamado myDoctor
+                                        //Donde Models.Doctor() es el metodo constructor.
         /*myDoctor.name = "Alejandro Rodriguez"; //.name es acceder a una caracteristica de la clase para modificarla
         myDoctor.showName(); //.showName() es llamar al metodo definido dentro de la clase.
         myDoctor.showId();
 
-        Doctor MyDoctorAnn = new Doctor();
+        Models.Doctor MyDoctorAnn = new Models.Doctor();
         myDoctor.showId();
 
-        Doctor myDoctor = new Doctor("Anahi Salgado","Pediatria");
+        Models.Doctor myDoctor = new Models.Doctor("Anahi Salgado","Pediatria");
         System.out.println(myDoctor.name);
         System.out.println(myDoctor.speciality);
 
-        Patient patient = new Patient("Alejandra", "a.chavarria@patient.com");
+        Models.Patient patient = new Models.Patient("Alejandra", "a.chavarria@patient.com");
         patient.setWeight(79.0);
         patient.setHeight(1.79);
         patient.setPhoneNumber("1234567890");
@@ -35,9 +37,22 @@ public class Main {
         myDoctor.addAvailableAppointment(new Date(),"11am");
         myDoctor.addAvailableAppointment(new Date(),"1pm");
 
-        for (Doctor.AvailableAppointment aA: myDoctor.getAvailableAppointments()){
+        /*
+        for (Models.Doctor.AvailableAppointment aA: myDoctor.getAvailableAppointments()){
             System.out.println(aA.getDate()+" "+aA.getTime());
         }
+        */
+
+
+        Patient patient = new Patient("Gio", "G@mail.com");
+
+        System.out.println(myDoctor);
+
+        User user = new Doctor("Rocio", "LRBJ@mail.com");
+        user.showDataUser();
+
+        System.out.println("\n");
+        System.out.println(patient);
     }
 }
 

@@ -1,41 +1,29 @@
+package Models;
+
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Doctor {
-    static int id = 0;  //static permite que todos los cambios realizados en la variable
-    //se conserven a lo largo de toooodo el programa
-    //sin importar donde se realicen los cambios o donde se lean.
-    private String name;
-    private String email;
+public class Doctor extends User{
+    /*static int id = 0;  //static permite que todos los cambios realizados en la variable
+                        //se conserven a lo largo de toooodo el programa
+                        //sin importar donde se realicen los cambios o donde se lean.*/
     private String speciality;
 
-
-    //Available Appointment
-
-
-    /*******************************************************************************************************/
+    /* ***************************************************************************************************** */
 //  COSTRUCTORS
-
-    Doctor(){
-        System.out.println("Construyendo el metodo Doctor...");
-    }
-
-    Doctor(String name, String speciality){
-        System.out.println("El nombre del Doctor es: " + name);
-        id++;
-        this.name = name; // asignamos los valores ingresados al metodo a los parametros de la clase
+    public Doctor(String name, String email){
+        super(name, email);
         this.speciality = speciality;
-
     }
 
     /* ***************************************************************************************************** */
 //  METHODS
     public void showName(){
-        System.out.println(name);
+        System.out.println(getName());
     }
 
     public void showId(){
-        System.out.println("Doctor ID: " + id);
+        System.out.println("Models.Doctor ID: ");
     }
 
     ArrayList<AvailableAppointment> availableAppointments = new ArrayList<>();
@@ -50,30 +38,6 @@ public class Doctor {
         return availableAppointments;
     }
 
-    public static int getId() {
-        return id;
-    }
-
-    public static void setId(int id) {
-        Doctor.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getSpeciality() {
         return speciality;
     }
@@ -84,6 +48,17 @@ public class Doctor {
 
     public void setAvailableAppointments(ArrayList<AvailableAppointment> availableAppointments) {
         this.availableAppointments = availableAppointments;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +"\nSpeciality: " + speciality + "\nAvailable: " + availableAppointments.toString();
+    }
+
+    @Override
+    public void showDataUser() {
+        System.out.println("Empleado: Hospital Star Medica");
+        System.out.println("Departamento: Cancerologia");
     }
 
     /* ***************************************************************************************************** */
@@ -121,6 +96,11 @@ public class Doctor {
 
         public void setTime(String time) {
             this.time = time;
+        }
+
+        @Override
+        public String toString() {
+            return "Available Appointments: \n Date: " + date + "\n Time: " +time;
         }
     }
 }
