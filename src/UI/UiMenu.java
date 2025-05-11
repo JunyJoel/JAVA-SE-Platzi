@@ -29,7 +29,7 @@ public class UiMenu {
 
             switch (response){
                 case 1:
-                    System.out.println("Models.Doctor");
+                    System.out.println("Hello Doctor");
                     response = 0;
                     authUser(1);
                     break;
